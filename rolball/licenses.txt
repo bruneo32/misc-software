@@ -1,0 +1,23 @@
+<div style="text-align:center;">
+<b>Using:</b>
+<a target="_blank" href="https://openai.com/blog/tags/gpt-2/">GPT-2</a> from OpenAI
+
+<b>Background music:</b>
+"Danse Macabre" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+</div>
+
+https://opengameart.org/users/ap
+https://opengameart.org/users/williamthompsonj
+https://opengameart.org/users/ironthunder
+https://opengameart.org/users/zonked
+https://opengameart.org/users/vadimv0230
+https://opengameart.org/users/jeremygooch
+
+https://opengameart.org/content/rpg-gui-construction-kit-v10
+https://opengameart.org/content/rusty-menu-icons
+https://opengameart.org/content/dwarven-cursor
+https://fonts.google.com/specimen/Amarante
+https://opengameart.org/content/menu-selection-click
+https://opengameart.org/content/page-turning-sfx-sound-effect
