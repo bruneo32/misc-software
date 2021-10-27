@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="notranslate" translate="no" oncontextmenu="return false" oncopy="return false" oncut="return false" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+<head>
+	<title>Fill Up</title>
+	<link rel="shortcut icon" type="image/x-icon" href="res/icon.png"/>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="theme-color" content="#FFFF00"/>
+	<meta name="google" content="notranslate" />
+
+		<script type="text/javascript">
+			const CLOC="index";
+		</script>
+
+	<script type="text/javascript" src="js/pace.js"></script>
+
+	<link rel="stylesheet" href="css/style.css"/>
+	<script type="text/javascript" src="js/script.js"></script>
+
+	<link rel="stylesheet" href="css/menu.css"/>
+	<script type="text/javascript" src="js/menu.js"></script>
+
+</head>
+<body class="unselectable" translate="no"><div id="bodyContent">
+	<div id="menu" class="panel">
+		<div id="animbk" onmouseup="Play()"></div><!-- Animacion -->
+
+		<h1 onmouseup="Play()" style="font-family:'fonti2','fonti',monospace;font-weight: bold;text-transform: none;">FILL UP</h1>
+		<h1 class="midTitle" onmouseup="Play()" data-polyglot="MENU_LABEL_PLAY">PLAY</h1>
+
+		<div onmouseup="SonidoImg();" id="btn_sonido" class="btn"><img src="res/audio.png" alt=""/></div>
+		<div onmouseup="goFullscreen();" id="btn_fullscreen" class="btn"><img src="res/fullscreen.png" alt=""/></div>
+		<div onmouseup="ShowPanel('cred')" id="btn_cred" class="btn"><img src="res/credits.png" alt=""/></div>
+		<div onmouseup="ShowPanel('lang')" id="btn_lang" class="btn"><img src="res/trad.png" alt=""/></div>
+		<div class="recs" style="right:0;bottom:0;">
+			<h1 data-polyglot="GAME_OBJECTIVE_HIGH_SCORE">High score</h1>
+			<div dir="ltr"><img src="res/record.png" alt=""/> <span id="hText">0</span></div>
+			<div dir="ltr"><img src="res/fire.png" alt=""/> <span id="rText">0</span></div>
+		</div>
+	</div>
+
+	<div id="cred" class="panel">
+		<a class="close" onmouseup="ShowPanel('menu')"><img src="res/x.png" alt=""/></a>
+		<br/><br/>
+		<h1 class="title" data-polyglot="MENU_LABEL_CREDITS">Créditos</h1>
+			<h1 class="stitle" data-polyglot="CREDITS_DEVELOPED_BY">Developed by:</h1>
+
+			<h1 class="stitle s2"><span data-polyglot="CREDITS_DIRECTOR">Director</span> / <span data-polyglot="CREDITS_LEAD_PROGRAMMER">Lead programmer</span>: </h1>Bruno Castro [<a target="_blank" href="mailto:bruno@retronomicon.gq">bruno@retronomicon.gq</a>]<br/>
+			<h1 class="stitle s2"><span data-polyglot="CREDITS_PROGRAMMER">Programmer</span> / <span data-polyglot="CREDITS_ARTIST">Artist</span>: </h1>Jorge J. Álvarez [<a target="_blank" href="mailto:jorge@retronomicon.gq">jorge@retronomicon.gq</a>]<br/>
+			<!-- <h1 class="stitle s2">Android app: </h1>Jimmy Núñez [<a target="_blank" href="mailto:jimmy@retronomicon.gq">jimmy@retronomicon.gq</a>]<br/> -->
+		<br/><br/>
+
+		<h1 class="title">Licenses</h1>
+			<h1 class="stitle">Fonts:</h1>
+			<a target="_blank" href="https://www.dafont.com/es/squarefont.font">SquareFont</a> (modified)<br/>
+			<a target="_blank" href="https://www.dafont.com/es/squarified.font">Squarified</a><br/>
+			<h1 class="stitle">PACE.js:</h1>
+			<a target="_blank" href="https://github.hubspot.com/pace/docs/welcome/">https://github.hubspot.com/pace/docs/welcome/</a><br/>
+			<h1 class="stitle">Some icons under <a target="_blank" href="https://creativecommons.org/share-your-work/public-domain/cc0/">CC0 license</a> from:</h1>
+			<a target="_blank" href="https://www.iconarchive.com/">https://www.iconarchive.com/</a><br/>
+			<h1 class="stitle" data-polyglot="CREDITS_POLYGLOT">Traducido por el proyecto Polyglot:</h1>
+			<div style="float:left;"><img style="float: left;margin:8px;" src="res/polyglot.png" alt=""/><a target="_blank" href="https://docs.google.com/spreadsheets/d/17f0dQawb-s_Fd7DHgmVvJoEGDMH_yoSd8EYigrb0zmM/edit#gid=310116733">https://docs.google.com/spreadsheets/d/17f0dQawb-s_Fd7DHgmVvJoEGDMH_yoSd8EYigrb0zmM/edit#gid=310116733</a></div><br/>
+			<br/><br/><br/>
+
+		<a target="_blank" href="https://www.retronomicon.gq"><img style="margin-top:16px;max-height: 96px;" src="res/bannerComp.png" alt=""/></a>
+		<br/><br/>
+		<div dir="ltr" style="font-family: 'fonti2',monospace;background:#000;color:#FFF;margin-left:-64px;margin-right:-64px;max-width:none;width:calc(100% + 128px - 32px);height:1.1em;padding:16px;"><span style="float:left;text-transform:none;">&copy; Retronomicon - 2021</span><span style="float:right;text-transform:none;" id="verionspan">v-1.x</span></div>
+	</div>
+
+	<div id="lang" class="panel">
+		<a class="close" onmouseup="ShowPanel('menu')"><img src="res/x.png" alt=""/></a>
+		<h1 data-polyglot="MENU_LABEL_LANGUAGE">LANGUAGE</h1>
+		<ul id="langlist"></ul>
+
+		<input type="button" value="OK" id="okbtn" onmouseup="ChangeLang()"/><br/>
+		<script type="text/javascript">
+			// Cambiar texto OK del boton según el idioma
+			document.getElementById("okbtn").value=Translate("MENU_LABEL_OK",LANG);
+		</script>
+	</div>
+</div> <!-- FIN #bodyContent -->
+
+	<!-- Eventos de teclas y mouse -->
+	<script type="text/javascript">
+		// Establecer la imagen del boton de sonido al iniciar
+		if(getConfig("snd") == "true"){
+			document.getElementById("btn_sonido").children[0].src="res/audio.png";
+		}else{
+			document.getElementById("btn_sonido").children[0].src="res/audiomute.png";
+		}
+
+		// Version
+		document.getElementById("verionspan").innerHTML="v-"+getVersion();
+
+		// Generar idiomas
+		var SEL_LANG = -1; // idioma seleccionado
+		var ii=LANG_ARRAY["MENU_LANGUAGE_THIS"].split(",");
+		var ij=LANG_ARRAY["LANGUAGE_EN"].split(",");
+		for(var i=0; i<ii.length; i++){
+			var res = "";
+			if(ii[i]!=ij[i]){
+				res="<div>"+ii[i]+"</div><div>"+ij[i]+"</div>";
+			}else{
+				res="<span style=\"display:inline-block;margin-top:0.3em;\">"+ii[i]+"</span>";
+			}
+			document.getElementById("langlist").innerHTML+="<li onclick=\"ChangeLangColors(this.id)\" id=\"lind_"+i.toString()+"\">"+res+"</li>";
+		}
+		function ChangeLangColors(aid){
+			var lis = document.getElementById("langlist").children;
+			for(var i=0;i<lis.length;i++){
+				lis[i].style.background="#00CD00";
+			}
+			document.getElementById(aid.toString()).style.background="#CDFFCD";
+
+			SEL_LANG = parseInt(aid.toString().replace("lind_",""));
+		}
+		function ChangeLang(){
+			if(SEL_LANG==-1){return;}
+			setConfig("lang",SEL_LANG.toString());
+			location.reload(); // Recargar la página
+		}
+		ChangeLangColors("lind_"+LANG.toString());
+
+		// Records
+		document.getElementById("hText").innerHTML=getConfig("hscore");
+		document.getElementById("rText").innerHTML=getConfig("rscore");
+
+		document.body.addEventListener('keydown', function(e){
+			var key = e.keyCode;
+			switch(key){
+				case 27: // ESCAPE
+					ShowPanel("menu");
+				break;
+				case 32: // SPACE
+					Play();
+				break;
+				case 77: // M - Mute
+					SonidoImg();
+				break;
+			}
+		});
+	</script>
+	<div id="xd">
+		<!-- Transicion -->
+		<div></div>
+		<div><h1 id="paceH1" class="pace-progress">0%</h1></div>
+	</div>
+	<script type="text/javascript" src="js/postscript.js"></script>
+</body>
+</html>

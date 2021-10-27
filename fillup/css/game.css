@@ -1,0 +1,143 @@
+body{
+  background:#FFF;
+}
+.minimsg{
+  width:100%;
+  position:fixed;
+  left:50%;
+  bottom:0;
+  transform: translate(-50%, 0);
+  z-index: 20;
+  padding:16px;
+  color:#FFF;
+}
+.minimsg div{
+  border-radius: min(8vw, 32px);
+  padding: min(2vw, 8px) min(4vw, 16px);
+  display: none;
+  transform: translate(0, calc(100% + 16px));
+}
+.minimsg div span{
+  font-family: 'fonti2', 'fonti', monospace;
+  display:inline-block;
+  font-size: min(6vw, 24px);
+}
+.minimsg div img{
+  display:inline-block;
+  max-width: 32px;
+  width: 6vw;
+}
+#rmsg{
+  background:#FF0000;
+  border:2px solid #AA0000;
+}
+#hmsg{
+  background:#3333FF;
+  border:2px solid #0000AA;
+}
+
+#scoreLabel{
+  text-transform: none;
+  font-family: 'fonti2', 'fonti', monospace;
+  font-weight: bold;
+  white-space: nowrap;
+  color:#000;
+  margin-top:32px;
+  transform: translate(0, -50%);
+}
+#toprect, #botrect{
+  width:100%;
+  min-height:64px;
+  position:fixed;
+  text-align: center;
+}
+#toprect{
+  background:#FFFF00;
+  max-height:64px;
+  top:0;
+  z-index:11;
+}
+#botrect{
+  transition: 0s;
+  background: #00FFFF;
+  bottom:0;
+  z-index:10;
+}
+
+#pauseDiv{
+  display:none;
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;left:0;
+  z-index:100;
+
+  background:rgba(0,0,0,0.6);
+}
+#pauseDiv h1{
+  margin:32px;
+  color:#FFF;
+}
+#pauseDiv a{
+  white-space: pre-wrap;
+  margin:32px;
+  color:#FFF;
+}
+
+/* HEREDADO DE MENU.CSS */
+/* BOTONES */
+.btn{line-height: 0;}
+.btn, .recs{
+	position: absolute;
+	padding:16px;
+	margin:0;
+}
+.recs{right:0;bottom:0;}
+.btn img{
+	width:32px;
+  background:#c1c1c1;
+  padding:9px;
+	border:2px solid #666;
+	border-radius: 12px;
+}
+.btn img:hover{
+	background:#FFFF69;
+}
+.btn img:active{
+	background:#FF6900;
+}
+.recs h1, .recs span{
+  margin: 0;
+  line-height: 1em;
+  color:#FFF;
+}
+.recs h1{
+  font-size: min(4vw, 16px);
+  font-weight: normal;
+  width: min-content;
+  margin:0 0 0 auto;
+  text-align: right;
+}
+.recs span{
+  font-family: 'fonti2',monospace;
+  font-size: min(4vw, 22px);
+  font-weight: bold;
+}
+
+#btn_sonido{
+	left:0;
+	bottom:0;
+}
+#btn_fullscreen{
+	left:64px;
+	bottom:0;
+}
+
+@media only screen and (min-width: 720px) {
+  #btn_sonido, #btn_fullscreen{
+    margin-left:calc(50% - 360px);
+  }
+  .recs{
+    margin-right:calc(50% - 360px);
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="notranslate" translate="no" oncontextmenu="return false;" oncopy="return false" oncut="return false" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+<head>
+	<title>Fill Up</title>
+	<link rel="shortcut icon" type="image/x-icon" href="res/icon.png"/>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="theme-color" content="#FFFF00"/>
+	<meta name="google" content="notranslate" />
+
+		<script type="text/javascript">
+			const CLOC="game";
+		</script>
+
+	<script type="text/javascript" src="js/pace.js"></script>
+
+	<link rel="stylesheet" href="css/style.css"/>
+	<script type="text/javascript" src="js/script.js"></script>
+
+	<link rel="stylesheet" href="css/game.css"/>
+	<script type="text/javascript" src="js/game.js"></script>
+
+</head>
+<body class="unselectable" translate="no" dir="ltr" oncontextmenu="Pausa()">
+	<div id="toprect"><h1 id="scoreLabel"></h1></div>
+	<div id="botrect"></div>
+
+	<div class="minimsg">
+		<div id="hmsg"><img src="res/record.png" alt=""/> <span>0</span></div>
+		<div id="rmsg"><img src="res/fire.png" alt=""/> <span>0</span></div>
+	</div>
+
+	<div id="pauseDiv">
+		<h1 data-polyglot="MENU_LABEL_PAUSED">Pause</h1>
+		<br/><br/>
+		<a onclick="Pausa()" data-polyglot="MENU_LABEL_CONTINUE">Continue</a><br/><br/>
+		<a onclick="IrAMenu()" data-polyglot="MENU_LABEL_RETURN_MAIN">Return to menu</a>
+
+		<div onmousedown="SonidoImg();" id="btn_sonido" class="btn"><img src="res/audio.png" alt=""/></div>
+		<div onmousedown="goFullscreen();" id="btn_fullscreen" class="btn"><img src="res/fullscreen.png" alt=""/></div>
+		<div class="recs">
+			<h1 style="margin:0 0 0 auto;" data-polyglot="GAME_OBJECTIVE_HIGH_SCORE">High score</h1>
+			<div dir="ltr"><img src="res/record.png" alt=""/> <span id="hText">0</span></div>
+			<div dir="ltr"><img src="res/fire.png" alt=""/> <span id="rText">0</span></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		// Establecer la imagen del boton de sonido al iniciar
+		if(getConfig("snd") == "true"){
+			document.getElementById("btn_sonido").children[0].src="res/audio.png";
+		}else{
+			document.getElementById("btn_sonido").children[0].src="res/audiomute.png";
+		}
+
+		// Records
+		document.getElementById("hText").innerHTML=getConfig("hscore");
+		document.getElementById("rText").innerHTML=getConfig("rscore");
+
+		document.body.addEventListener('keydown', function(e){
+			var key = e.keyCode;
+			switch(key){
+				case 27: // ESCAPE
+					Pausa();
+				break;
+				case 32: // SPACE
+					CheckCollision(e);
+				break;
+				case 77: // M - Mute
+					SonidoImg();
+				break;
+			}
+		});
+		
+		if(!isMobile()){document.addEventListener('mousedown', CheckCollision);}
+		else{document.addEventListener('touchstart', CheckCollision);}
+
+		document.getElementById("pauseDiv").setAttribute("dir",Translate("LANGUAGE_DIRECTION",LANG));
+	</script>
+
+	<div id="xd">
+		<!-- Transicion -->
+		<div></div>
+		<div><h1 id="paceH1" class="pace-progress">0%</h1></div>
+	</div>
+	<script type="text/javascript" src="js/postscript.js"></script>
+</body>
+</html>
