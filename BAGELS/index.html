@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false;" oncopy="return false;" oncut="return false;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+<!-- Version: 1.6 -->
+<head>
+<title>BAGELS</title>
+<meta name="Description" content="Bagels is a miscellaneous game, developed and published by Compute! Publications, which was released in 1992. This is a version written in JavaScript by Neo-OmegaSoft."/>
+
+  <meta property="og:url" content="retronomicon.gq/bagels" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BAGELS - MISCELLANEOUS CLASSIC GAME" />
+  <meta property="og:description" content="Bagels is a miscellaneous game, developed and published by Compute! Publications, which was released in 1992. This is a version written in JavaScript by Neo-OmegaSoft." />
+  <meta property="og:image" content="icon.png" />
+  <meta property="og:image:alt" content="BAGELS" />
+	
+<meta name="theme-color" content="#000"/>
+<link rel="shortcut icon" href="icon.png" type="image/x-icon"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script type="text/javascript">
+  var jsver = 1.0;
+</script>
+<script language="Javascript1.1">
+  jsver = 1.1;
+</script>
+<script language="Javascript1.2">
+  jsver = 1.2;
+</script>
+<script language="Javascript1.3">
+  jsver = 1.3;
+</script>
+<script language="Javascript1.4">
+  jsver = 1.4;
+</script>
+<script language="Javascript1.5">
+  jsver = 1.5;
+</script>
+<script language="Javascript1.6">
+  jsver = 1.6;
+</script>
+<script language="Javascript1.7">
+  jsver = 1.7;
+</script>
+<script language="Javascript1.8">
+  jsver = 1.8;
+</script>
+<script language="Javascript1.9">
+  jsver = 1.9;
+</script>
+<script type="text/javascript">
+  if(jsver<1.7){
+    location="incompatible.html";
+  }
+</script>
+<style>
+@font-face{
+	font-family: 'C64';
+	src: url('C64.TTF');
+}
+@font-face{
+	font-family: 'C64A';
+	src: url('C64A.ttf');
+}
+*{
+  margin:0px;
+  padding:0px;
+  font-family: 'C64', 'C64A', monospace;
+  background:#000;
+  color:#FFF;
+  font-size:1em;
+  user-select:none;
+  border:0px;
+  outline:none;
+}
+body{
+  overflow:hidden;
+}
+#SUBBODY{
+  overflow:hidden;
+  padding:16px;
+  background:#000;
+  display:inline-block;
+  width:calc(100% - 32px);
+}
+h1{
+  font-weight:normal;
+  margin-left:22em;
+}
+hr{
+  border-style: inset;
+  border-width: 1px;
+}
+#STARTMENU{
+  display:none;
+  padding:16px;
+}
+input{
+  outline: none;
+  flex:1;
+}
+input[type="number"], select{
+  width:4em;
+  text-align:right;
+  border:1px solid #666;
+  padding:3px;
+}
+select{
+  width:auto;
+}
+input[type="submit"]{
+  cursor:pointer;
+  text-align:right;
+  border:1px solid #666;
+  padding:6px 12px 6px 12px;
+}
+
+.center{text-align:center;}
+
+.MK_S{
+  grid-column: 3 / 9;
+}
+.MK_YN{font-size:0.6em;}
+#mKeyboard{
+  display:none;
+  grid-template: 'auto auto auto auto auto auto auto auto auto auto';
+  grid-gap:0px;
+  
+  background:#333;
+  
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  width:100%;
+}
+#mKeyboard button{
+  white-space: nowrap;
+  background:rgba(0,0,0,0);
+  padding:10px;
+  border:1px solid #666;
+  transition:0.1s;
+}
+#mKeyboard button:active{
+  background:#EEE;
+}
+
+
+.checkbox input {
+  position: relative;
+  z-index: -9999;
+}
+
+.checkbox span {
+  cursor:pointer;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  background: url("checkbox0.png");
+  background-size: 100% 100%;
+}
+
+.checkbox input:checked + span {
+  background: url("checkbox1.png");
+  background-size: 100% 100%;
+}
+</style>
+<script type="text/javascript">
+
+/*
+15 REM *** BAGLES NUMBER GUESSING GAME
+20 REM *** ORIGINAL SOURCE UNKNOWN BUT SUSPECTED TO BE
+25 REM *** LAWRENCE HALL OF SCIENCE, U.C. BERKELY
+*/
+
+// STORAGE CONFIGURATION
+if(!localStorage.lang){
+    localStorage.setItem("lang",0);
+	var lang=0;// 0: eng; 1: esp;
+}else{
+	var lang = Number(localStorage.getItem("lang"));
+}
+
+if(!localStorage.stps){
+    localStorage.setItem("stps",30);
+	var stps=30;
+}else{
+	var stps = Number(localStorage.getItem("stps"));
+}
+
+if(!localStorage.digits){
+    localStorage.setItem("digits",3);
+	var digits=3;
+}else{
+	var digits = Number(localStorage.getItem("digits"));
+}
+
+if(!localStorage.ardous){
+    localStorage.setItem("ardous",1);
+	var ardous=1;
+}else{
+	var ardous = Number(localStorage.getItem("ardous"));
+}
+
+if(!localStorage.soundon){
+    localStorage.setItem("soundon",true);
+	var soundon=true;
+}else{
+	var soundon = ((localStorage.getItem("soundon") == 'true'));
+}
+
+
+// GAME VARS
+var br = "<br/>";
+var lafunc;
+var digitsArdous = 0;
+var GuessNumber = 1;
+var A=[];
+var Y=0;
+
+
+// DIALOGOS [ENG,ESP],
+var DIALOG = [
+["WOULD YOU LIKE THE RULES (YES OR NO)","QUIERES LEER LAS REGLAS (SI O NO)"],
+["I AM THINKING OF A *-DIGIT NUMBER.  TRY TO GUESS¬MY NUMBER IN Ç GUESS(ES) AND I WILL GIVE YOU CLUES AS FOLLOWS:¬···PICO····-·ONE DIGIT CORRECT BUT IN THE WRONG POSITION¬···FERMI···-·ONE DIGIT CORRECT AND IN THE RIGHT POSITION¬···BAGELS - NO DIGITS CORRECT¬¬","ESTOY PENSANDO EN UN NUMERO DE * DIGITOS. INTENTA ADIVINAR¬MI NUMERO EN Ç INTENTO(S) Y TE DARE LAS SIGUIENTES PISTAS:¬···PICO····-·UN DIGITO CORRECTO PERO EN LA POSICION INCORRECTA¬···FERMI···-·UN DIGITO CORRECTO Y EN LA POSICION CORRECTA¬···BAGELS - NINGUN DIGITO CORRECTO¬¬"],
+["O.K.··I HAVE A NUMBER IN MIND.","O.K.··TENGO UN NUMERO EN MENTE."],
+["GUESS # ","INTENTO # "],
+["TRY GUESSING A *-DIGIT NUMBER.","INTENTA INGRESAR UN NUMERO DE * DIGITOS."],
+["WHAT?","QUE?"],
+["OH, I FORGOT TO TELL YOU THAT THE NUMBER I HAVE IN MIND¬HAS NO TWO DIGITS THE SAME.","OH, OLVIDE DECIRTE QUE EL NUMERO QUE TENGO EN MENTE¬NO TIENE DOS DIGITOS IGUALES."],
+["YOU GOT IT!!!","HAS ACERTADO!!!"],
+["OH WELL.¬THAT'S Ç GUESS(ES).  MY NUMBER WAS ","OH VAYA.¬HAN SIDO Ç INTENTO(S). MI NUMERO ERA "],
+["PLAY AGAIN (YES OR NO)","VOLVER A JUGAR (SI O NO)"],
+[" POINT BAGELS. BUFF!!"," PUNTOS. BUFF!!"],
+["HOPE YOU HAD FUN.  BYE.¬¬¬È","ESPERO QUE HAYAS DISFRUTADO.  ADIOS.¬¬¬È"],
+["A ","UN BAGELS DE "],
+["Restart","Reiniciar"]
+];
+
+
+// BASIC FUNCS
+function CheckMobile(){
+	var navInfo = window.navigator.appVersion.toLowerCase();
+	if(navInfo.indexOf('mobile') != -1){return true;}
+	return false;
+}
+function PRINT(str){
+	document.getElementById("SUBBODY").innerHTML+=str;
+	window.scrollBy(0, 500);
+}
+
+function TAB(nn){
+	for(var i=0; i<nn; i++){
+		PRINT("&nbsp;");
+	}
+}
+
+
+// AUDIOBEEP
+var a = new AudioContext();
+function beep(freq, duration){
+  const v=a.createOscillator();
+  const u=a.createGain();
+  v.connect(u);
+  v.frequency.value=freq;
+  v.type="square";
+  u.connect(a.destination);
+  u.gain.value=6*0.01;
+  v.start(a.currentTime);
+  v.stop(a.currentTime+duration*0.001);
+}
+
+function BAGELS_MELODY(){
+	if(!soundon){return 0;}
+	var tempo = 200;
+	
+	//first note
+	beep(783.99,tempo);// G5
+	
+	setTimeout(function (){
+		beep(659.25,tempo);// E5
+	},tempo);
+	setTimeout(function (){
+		beep(587.33,tempo);// D5
+		beep(440,tempo);// A4
+	},tempo*2);
+	setTimeout(function (){
+		beep(523.25,tempo);// C5
+	},tempo*3);
+	setTimeout(function (){
+		beep(587.33,tempo);// D5
+		beep(392,tempo);// G4
+	},tempo*4);
+	
+	// SILENCE
+	
+	setTimeout(function (){
+		beep(880,tempo);// A5
+		beep(196,tempo);// G3
+	},tempo*6);
+	setTimeout(function (){
+		beep(440,tempo);// A4
+		beep(392,tempo);// G4
+	},tempo*7);
+	setTimeout(function (){
+		beep(392,tempo);// G4
+		beep(261.63,tempo);// C4
+	},tempo*8);
+	setTimeout(function (){
+		beep(523.25,tempo);// C5
+		beep(329.63,tempo);// E4
+	},tempo*9);
+	
+	// 2 SILENCES
+	
+	setTimeout(function (){
+		beep(1046.50,tempo);// C6
+	},tempo*12);
+}
+
+
+// MAIN
+function CALCNUMB(){
+	// calcular un numero
+	for(var i=1; i<=digits; i++){
+		A[i]=Math.floor((Math.random() * 9));
+		if(i-1==0){continue;}
+		for(var j=0; j<=(i-1); j++){
+			if(A[i]==A[j]){i--;}
+		}
+	}
+}
+
+function GetInputMain(){
+	var inp = document.createElement("INPUT");
+	inp.type = "text";
+	inp.autocomplete="off";
+	inp.id="1";
+	if(CheckMobile()){inp.setAttribute("readonly","readonly");}
+	inp.addEventListener("blur", function (){inp.focus();}); // Don`t lose the focus
+	function R1D1(e) { // CHECK KEY ENTER
+		var key = e.which || e.keyCode;
+		if (key === 13) {
+			inp.removeEventListener('keypress', R1D1);
+			// code for enter
+			PRINT(inp.value);
+			window[lafunc](inp.value);
+			PRINT(br);
+			var elem = document.getElementById("1");
+			if(elem==null){return 0;}
+			elem.parentNode.removeChild(elem);
+		}
+	}
+	inp.addEventListener('keypress', R1D1);
+	
+	document.getElementById("SUBBODY").appendChild(inp);
+	inp.focus();
+}
+
+function PRT(str,getinp){
+	var i=0;
+	
+	function crako(){
+		if(str.charAt(i)=="¬"){
+			PRINT(br);
+		}else if(str.charAt(i)=="·"){
+			PRINT("&ensp;");
+		}else if(str.charAt(i)=="*"){
+			PRINT(digits);
+		}else if(str.charAt(i)=="Ç"){
+			PRINT(digitsArdous);
+		}else{
+			PRINT(str.charAt(i));
+		}
+		var freq = str.charCodeAt(i);
+		if(soundon){beep(freq,stps);}
+		i++;
+	}
+	for (var si = 0; si < str.length; si++) {
+		setTimeout(crako,si*stps);
+	}
+	if(getinp){
+		setTimeout(PRINT,str.length*stps,"?");
+		setTimeout(PRINT,(str.length+1)*stps," ");
+		setTimeout(GetInputMain,(str.length+2)*stps);
+	}else{
+		setTimeout(function(){
+			window[lafunc]("");
+		},str.length*stps);
+	}
+}
+
+function RULES(){
+	lafunc="_RULES";
+	PRT(DIALOG[0][lang],1);
+}
+
+function Guess(arg){
+	lafunc="_Guess";
+	PRINT(br);
+	PRINT(br);
+	PRT(DIALOG[3][lang]+GuessNumber+"·····",1);
+}
+
+function PlayAgain(arg){
+	lafunc="_PlayAgain";
+	PRINT(br);
+	PRINT(br);
+	PRT(DIALOG[9][lang],1);
+}
+
+
+// RESPONSES
+function _RULES(arg){
+	lafunc="Guess";
+	arg=arg.toUpperCase();
+	
+	CALCNUMB();
+	
+	if(arg=="YES" || arg=="Y" || arg=="SI" || arg=="S" || arg=="SÍ"){
+		// YES
+		PRINT(br+br);
+		PRT(DIALOG[1][lang]+DIALOG[2][lang],0);
+	}else{
+		// NO
+		PRINT(br+br);
+		PRT(DIALOG[2][lang],0);
+	}
+}
+
+function _Guess(arg){
+	lafunc="Guess";
+	PRINT(br);
+	if(arg.length != digits){
+		PRT(DIALOG[4][lang]+"¬",0);
+		return 0;
+	}
+	var Al = [];
+	var B = [];
+	for(var z=1; z<=digits; z++){
+		Al[z]=arg.charCodeAt(z-1);
+	}
+	for(var z=1; z<=digits; z++){// limitar y convertir Al a B
+		if (Al[z]<48 || Al[z]>57){
+			PRT(DIALOG[5][lang]+"¬",0);
+			return 0;
+		}
+		B[z]=Al[z]-48;
+	}
+		// verificar que no se repitan
+		for(var i=1; i<digits; i++){
+			if(B.toString().replace(/,/g,"").slice(i).includes(B[i])){// por delante
+				PRT(DIALOG[6][lang]+"¬",0);
+				return 0;
+			}
+			if(B.toString().replace(/,/g,"").slice(0,i-1).includes(B[i])){// por detras
+				PRT(DIALOG[6][lang]+"¬",0);
+				return 0;
+			}
+		}
+		
+	// BUSCAR PICOS Y FERMIS
+	var C=0;
+	var D=0;
+	var returno = "";
+	
+	for(var j=1; j<=digits; j++){
+		if(A.toString().replace(/,/g,"").search(B[j]) != -1 &&
+		 A[j]!=B[j]){C++;}
+	}
+	
+	for(var j=1; j<=digits; j++){
+		if(A[j]==B[j]){D++;}
+	}
+	
+	if(D==digits){
+		//GANAR
+		Y++;
+		returno=DIALOG[7][lang];
+		lafunc="PlayAgain";
+	}else{
+		if(C!=0){
+			for(var j=1; j<=C; j++){
+				returno+="PICO ";
+			}
+		}
+		if(D!=0){
+			for(var j=1; j<=D; j++){
+				returno+="FERMI ";
+			}
+		}
+		if(C+D==0){
+			returno="BAGELS";
+		}
+	}
+	
+	// FINAL
+	if(GuessNumber==digitsArdous && (A.toString() != B.toString())){
+		// PERDER
+		returno=DIALOG[8][lang]+A.toString().replace(/,/g,"");
+		lafunc="PlayAgain";
+	}
+	
+	PRINT(br);
+	PRT(returno+"¬¬",0);
+	GuessNumber++;
+}
+
+function _PlayAgain(arg){
+	lafunc="Guess";
+	arg=arg.toUpperCase();
+	if(arg=="YES" || arg=="Y" || arg=="SI" || arg=="S" || arg=="SÍ"){
+		// YES
+		GuessNumber=1;
+		CALCNUMB();
+		PRINT(br+br);
+		PRT(DIALOG[2][lang],0);
+	}else{
+		// NO
+		lafunc="END";
+		PRINT(br+br);
+		var ss = "";
+		if(Y!=0){
+			ss=DIALOG[12][lang]+Y.toString()+DIALOG[10][lang]+"¬¬";
+		}
+		PRT(ss+""+DIALOG[11][lang]+"¬¬",0);
+	}
+}
+
+
+// THE MENU CONFIG & START THE GAME
+
+// PRESTART
+function PRESTART(e){
+	document.removeEventListener('keypress', PRESTART);
+	soundon = document.getElementById("sound_field").checked;
+	localStorage.setItem("soundon",soundon);
+	
+	BAGELS_MELODY();
+	
+	document.getElementById('STARTMENU').style.display="block";
+	document.getElementById('starttext').style.display="none";
+	
+	document.getElementById("lang_field").value=lang;
+	document.getElementById("stps_field").value=stps;
+	document.getElementById("digits_field").value=digits;
+	document.getElementById("ardous_field").value=ardous;
+}
+
+function START_GAME(){
+	var FORM= document.getElementById("STARTMENU");
+	var lang_field= document.getElementById("lang_field");
+	var stps_field= document.getElementById("stps_field");
+	var digits_field= document.getElementById("digits_field");
+	var ardous_field= document.getElementById("ardous_field");
+	
+	lang=lang_field.value;
+	stps=stps_field.value;
+	digits=digits_field.value;
+	ardous=ardous_field.value;
+	
+	localStorage.setItem("lang",lang);
+	localStorage.setItem("stps",stps);
+	localStorage.setItem("digits",digits);
+	localStorage.setItem("ardous",ardous);
+	
+	// Calculate Arduousness
+	switch(Number(ardous)){
+		case 0:// Easy
+			digitsArdous = digits * 6;
+		break;
+		
+		case 2:// Hard
+			digitsArdous = digits * 2;
+		break;
+		
+		case 3:// Jojo
+			digitsArdous = 1;
+		break;
+		
+		default:// Medium
+			digitsArdous = digits * 3;
+		break;
+	}
+	
+	
+	FORM.style.display="none";
+	
+	if(lang==1){//espanis
+		PRINT('<div class="center">INFORMATICA CREATIVA MORRISTOWN, NUEVA JERSEY</div><br/><div  class="center">ADAPTACION A JAVASCRIPT POR RETRONOMICON</div><br/><br/><br/><br/><br/><br/><br/><br/>');
+	}else{//english
+		PRINT('<div  class="center">CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY</div><br/><div  class="center">JAVASCRIPT ADAPTATION BY RETRONOMICON</div><br/><br/><br/><br/><br/><br/><br/><br/>');
+	}
+	
+	RULES();// start game
+}
+function END(){
+	var calvoa = '&ensp;&ensp;&ensp;&ensp;<input type="submit" onclick="location.reload();" value="'+DIALOG[13][lang]+'"/>';
+	PRINT(calvoa+br+br);
+	if(soundon){beep(210, 800); beep(500, 800);}
+	return 0;
+}
+
+
+// Para minikeyboard
+function _SPACEKEY(){
+	if(document.getElementById("1")){
+		// Si esta jugando que active R1D1
+		document.getElementById("1").dispatchEvent(new KeyboardEvent('keypress', {keyCode: 13}));
+	}
+	document.dispatchEvent(new KeyboardEvent('keypress', {keyCode: 13}));
+}
+function preventFocus(){
+	var ae = document.activeElement;
+	ae.focus()
+	setTimeout(function (){ae.focus()}, 1);
+}
+function _keypress(strKEY){
+	var fElement = document.activeElement;
+	
+	if(soundon){
+		freq = strKEY.charCodeAt(0);
+		beep(261.63 + freq/2,100);
+	}
+	
+	if(strKEY == "DEL"){
+		if(fElement.getAttribute("type") == "number"){
+			// Campo de numero
+			fElement.value = parseInt(fElement.value) - 1;
+			return;
+		}else if(fElement.getAttribute("type") == "text"){
+			// Campo de texto
+			const valuef = fElement.value;
+			const startf = fElement.selectionStart - 1;
+			const newValue = valuef.substr(0, startf) + valuef.substr(startf + 1);
+			fElement.value = newValue;
+			return;
+		}
+	}
+	
+	if(strKEY == "SUPR"){
+		if(fElement.getAttribute("type") == "number"){
+			// Campo de numero
+			fElement.value = parseInt(fElement.value) + 1;
+			return;
+		}else if(fElement.getAttribute("type") == "text"){
+			// Campo de texto
+			const valuef = fElement.value;
+			const startf = fElement.selectionStart;
+			const newValue = valuef.substr(0, startf) + valuef.substr(startf + 1);
+			fElement.value = newValue;
+			return;
+		}
+	}
+	
+	// Normal
+	fElement.value += strKEY;
+}
+</script>
+</head>
+<body>
+<div id="SUBBODY">
+<!-- INICIO DE SUBBODY -->
+<br/>
+<div class="center">ÔÕÌ BAGELS ËÕÔ</div>
+<br/><br/><br/>
+<div class="center" id="starttext">
+<br/><br/>
+	Sound:
+	<label class="checkbox">
+	  <input type="checkbox" id="sound_field"/>
+	  <span></span>
+	</label>
+<br/><br/><br/><br/>
+	&#8268; PRESS SPACE TO START &#8269;
+</div>
+
+
+<form id="STARTMENU" class="center" onsubmit="START_GAME();">
+Language:
+<select autofocus id="lang_field">
+  <option value="0">English</option>
+  <option value="1">Español</option>
+</select>
+<br/><br/>
+Lecture delay: <input min="1" max="9999" type="number" id="stps_field" value="40"/>
+<br/><br/>
+Number digits: <input min="3" max="9" type="number" id="digits_field" value="3"/>
+<br/><br/>
+Arduousness:
+<select id="ardous_field">
+  <option value="0">Easy</option>
+  <option value="1">Medium</option>
+  <option value="2">Hard</option>
+  <option value="3">Jojo</option>
+</select>
+<br/><br/>
+<br/><br/>
+<input type="submit" value="Start"/>
+</form>
+<!-- FIN DE SUBBODY -->
+</div>
+
+<div id="mKeyboard">
+	<button onmousedown="preventFocus();_keypress('1')">1</button>
+	<button onmousedown="preventFocus();_keypress('2')">2</button>
+	<button onmousedown="preventFocus();_keypress('3')">3</button>
+	<button onmousedown="preventFocus();_keypress('4')">4</button>
+	<button onmousedown="preventFocus();_keypress('5')">5</button>
+	<button onmousedown="preventFocus();_keypress('6')">6</button>
+	<button onmousedown="preventFocus();_keypress('7')">7</button>
+	<button onmousedown="preventFocus();_keypress('8')">8</button>
+	<button onmousedown="preventFocus();_keypress('9')">9</button>
+	<button onmousedown="preventFocus();_keypress('0')">0</button>
+	<button onmousedown="preventFocus();_keypress('SUPR')" style="padding: 10px 0px 10px 0px;">&#8680;</button>
+	<button onmousedown="preventFocus();_keypress('Yes')" style="padding: 10px 0px 10px 0px;" class="MK_YN">Yes</button>
+	<button onmousedown="preventFocus();_SPACEKEY()" class="MK_S">SPACE</button>
+	<button onmousedown="preventFocus();_keypress('No')" style="padding: 10px 0px 10px 0px;" class="MK_YN">No</button>
+	<button onmousedown="preventFocus();_keypress('DEL')" style="padding: 10px 0px 10px 0px;">&#8678;</button>
+</div>
+
+<script type="text/javascript">
+document.addEventListener('keypress', PRESTART, false);
+document.addEventListener("DOMContentLoaded", function (){
+	document.getElementById("sound_field").checked=soundon;
+});
+// Check Mobile
+if(CheckMobile()){
+	document.getElementById("mKeyboard").style.display="grid";
+	document.getElementById("SUBBODY").style.position="fixed";
+	document.getElementById("SUBBODY").style.bottom="78px";
+}
+</script>
+</body>
+</html>
