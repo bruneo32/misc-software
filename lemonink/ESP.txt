@@ -1,0 +1,77 @@
+1.0
+Oración nueva
+Archivo
+Editar
+Personalizar
+Editar código
+Licencias y créditos
+Este proyecto es completamente gratuito, si te gusta considera hacer un donativo para mejorar:
+<b>Lemon Ink</b> es un <b>editor</b> web de <b>análisis sintáctico</b> gratuito, eficiente y claro. Completamente <b>configurable y personalizable</b> para poder analizar como más te guste. Permite <b>abrir y guardar</b> oraciones desde tu ordenador sin necesidad de pasar los datos por nuestro servidor para garantizar tu <b>seguridad</b>. Además puedes <b>exportar</b> tus oraciones para <b>imprimir o enviar</b>.<br/><br/>Aquí tienes algunos enlaces que te pueden ser de utilidad<br/><b>Enlaces:</b>
+Manual / Documentación
+Descargas
+Foro
+Usar Lemon Ink en más idiomas
+Sugerencias
+Reportar BUG
+Nuevo
+Abrir (XML)
+Guardar (XML)
+Exportar
+Comenzar
+Abrir un archivo...
+Guardar...
+¿Problemas exportando?
+Exportar como PNG...
+Exportar como PDF...
+También puedes hacer click derecho sobre un elemento para editarlo
+Elemento seleccionado
+Elemento
+Grupo
+Referencia
+Insertar
+Colorear
+Eliminar color
+Subordinar a...
+Sacar del grupo
+Eliminar elemento
+Crear grupo
+Subordinar todos los elementos anteriores
+Subordinar todos los elementos posteriores
+Eliminar grupo y su contenido
+Hacer referencia a...
+Eliminar referencias
+Insertar palabra antes
+Insertar palabra después
+Insertar palabra al principio de la oracion
+Insertar palabra al final de la oracion
+Fuente
+Oración
+Tema
+Código
+Idioma
+Tipografía
+Tamaño
+Notas
+Palabras
+Grupos
+Fuente
+Fondo
+Realce
+Usar sangría
+Carácter de sangría
+Cargar archivo de idioma...
+Restaurar idioma por defecto (Español)
+Restablecer
+Guardar cambios
+¿Sobreescribir la oración actual?
+Oración simple
+Insertar palabra
+Sólo puedes hacer referencia a palabras
+Sólo puedes crear referencias en una palabra
+Sólo puedes sacar el primer o el último elemento de un grupo
+No puedes subordinar un elemento a una palabra
+Sólo puedes subordinar elementos contiguos que estén en el mismo nivel
+Sólo puedes subordinar elementos contiguos
+No puedes subordinar un elemento a una palabra
+La página se recargará y perderás el progreso en la oración actual¬¿Deseas continuar?
+Si no tienes copia de seguridad del archivo de lenguaje actual no podrás recuperar los cambios más adelante¬¿Deseas continuar?

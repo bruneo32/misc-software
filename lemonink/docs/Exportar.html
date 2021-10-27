@@ -1,0 +1,50 @@
+<html lang="es">
+<head>
+<link href="doc.css" rel="stylesheet" type="text/css"/>
+<meta charset="UTF-8"/>
+</head>
+<body>
+
+<center>
+<h1><font size="6">Exportar con Lemon Ink</font></h1>
+<font size="4">Impulsado por: <a target="_blank" href="https://html2canvas.hertzen.com/">html2canvas</a> & <a target="_blank" href="https://github.com/MrRio/jsPDF">jsPDF</a></font><br>
+</center>
+<br>
+Exportar es una práctica utilizada para convertir el proyecto a un formato que no pueda volver a ser editado (en principio).<br/>
+Lo <b>ideal</b> sería exportar en <b>PNG</b> pues es un formato más ligero entre otros motivos.<br/>
+Aquí podemos ver claramente la relación de peso entre los archivos XML, PNG y PDF.
+<br/><img src="res/export3.PNG"></img>
+<br/>
+<h3>Exportar</h3>
+	Haga click en el "Exportar como PNG..." o como PDF (El resultado será mejor y más ligero en PNG) para descargar la oración en un formato listo para imprimir o enviar.<br/>
+	<img src="res/export.PNG"></img>
+	<img src="res/export2.PNG"></img>
+	<img src="res/otequila.png"></img><br/>
+	Este debe ser el resultado final, pero en ocasiones falla (ver más abajo "Problemas exportando").
+	<br/>
+<br/>
+<h3>Exportando referencias</h3>
+	Una de las carencias de exportar en Lemon Ink es que las <b>referencias desaparecen</b>, como es el caso de arriba  en la oración tequila (sólo se ve la punta de la flecha).
+	<br/>
+	Si tu intención es imprimirlo quizá puedas dibujarla a mano después o utilizando photoshop.
+	En cambio si tu intención es enviárselo a otra persona la mejor opción es enviarle el <b>archivo XML</b> e indícale que debe usar Lemon Ink.
+	<br/>
+<h3>Problemas exportando</h3>
+	Puede que al exportar el resultado sea este:<br/>
+	<img src="res/export4.png"></img><br/>
+	A veces la solución es tan simple como eliminar las referencias o algún carácter especial que esté interfiriendo. Si aun así no funciona prueba pulsando <b><tt>SHIFT+CTRL+R</tt></b> para recargar el caché de la página y vuelve a intentarlo.<br/><br/>
+	Si no funciona puedes sacar una captura de pantalla en caso de necesidad (En Windows <tt><i>Inicio > Accesorios de Windows > Herramienta de recortes</i></tt>). Si es para otra persona enviar como <b>XML</b>.
+	<br/>
+<h3>¿Por qué sucede esto?</h3>
+	La oración se convierte en imagen utilizando <a target="_blank" href="http://html2canvas.hertzen.com/documentation/"><i>html2canvas</i></a>, que tiene varias limitaciones
+	<br/>
+	<blockquote>
+	Traducido de la documentación oficial de html2canvas:
+	<br/><pre>El script recorre el DOM de la página en la que está cargado. Reúne información sobre todos los elementos, que luego utiliza para construir una representación de la página. En otras palabras, en realidad no toma una captura de pantalla de la página, sino que construye una representación de la misma en función de las propiedades que lee del DOM.
+
+Como resultado, sólo puede representar correctamente las propiedades que entiende, lo que significa que hay muchas propiedades CSS que no funcionan. Para obtener una lista completa de las propiedades CSS compatibles, consulte la página de <a target="_blank" href="http://html2canvas.hertzen.com/features">características compatibles.</a></pre></blockquote>
+	Entre estas características no se encuentran las propiedades de la etiqueta <i>&lt;SVG&gt;</i> que es la encargada de dibujar las flechas de las referencias.
+	<br/>
+<br/>
+</body>
+</html>

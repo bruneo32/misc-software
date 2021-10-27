@@ -1,0 +1,77 @@
+1.0
+New sentence
+File
+Edit
+Customize
+Edit code
+Licenses and Credits
+This project is completely free. If you like it, consider making a donation to improve:
+<b>Lemon Ink</b> is a free, efficient and clear <b>syntactic analysis web editor</b>. <b>Fully configurable</b> and <b>customizable</b> to be able to analyze as you like. It allows you to <b>open and save sentences</b> from your computer without having to pass the data through our server to guarantee your <b>security</b>. You can also <b>export your sentences</b> to print or send.<br/><br/>Here are some links that may be useful to you<br/><b>Links:</b>
+Manual / Documentation
+Downloads
+Forum
+Use Lemon Ink in more languages
+Suggestions
+Report a BUG
+New
+Open (XML)
+Save (XML)
+Export
+Start
+Open file...
+Save...
+Trouble exporting?
+Export as PNG...
+Export as PDF...
+You can also right-click on an item to edit it
+Selected element
+Element
+Group
+Reference
+Insert
+Colorize
+Remove color
+Subordinate to...
+Extract from group
+Remove element
+Create group
+Subordinate all previous elements
+Subordinate all subsequent elements
+Remove group and its content
+Make reference to...
+Remove references
+Insert word before
+Insert word after
+Insert word at the beginning of the sentence
+Insert word at the end of the sentence
+Font
+Sentence
+Theme
+Code
+Language
+Family
+Size
+Notes
+Words
+Groups
+Font
+Background
+Highlight
+Use indentation
+Indent character
+Load language file...
+Restore default language (Spanish)
+Reset
+Save changes
+Overwrite the current sentence?
+Sentence
+Insert word
+You can only make referece to words
+You can only create references words
+You can only extract the first or last element of a group
+You cannot subordinate an element to a word
+You can only subordinate contiguous elements that are on the same level
+You can only subordinate contiguous elements
+You cannot subordinate an element to a word
+The page will reload and you will lose the progress in the current sentence¬Do you want to continue?
+If you do not have a backup copy of the current language file, you will not be able to recover the changes later.¬Do you want to continue?

@@ -1,0 +1,25 @@
+<html lang="es">
+<head>
+<link href="doc.css" rel="stylesheet" type="text/css"/>
+<meta charset="UTF-8"/>
+</head>
+<body>
+
+<center>
+<h1><font size="6">Código en Lemon Ink</font></h1>
+</center>
+<br>
+El formato <a target="_blank" href="https://es.wikipedia.org/wiki/Extensible_Markup_Language">XML</a> de Lemon Ink es un lenguaje de etiquetas (o marcas) que permite guardar los datos de la oración en curso en un formato legíble. Esto, permite que el usuario pueda escriba la oración en formato de código en cualquier editor de texto y posteriormente visualizarlo en Lemon Ink.
+<h3>Partes</h3>
+	Aquí podemos ver un ejemplo de la oración "Juan tiene un perro verde", en el programa <a target="_blank" href="https://notepad-plus-plus.org/">Notepad++</a> para verlo visualmente más claro.
+	<img src="res/code1.PNG"></img><br/>
+	El archivo comienza con una línea que define la versión de XML y otra que sirve como marca de agua para Lemon Ink.<br/>
+	<i>Ignorando esas primeras líneas</i>, podemos ver que la oración se compone de una serie de <i>etiquetas</i> &lt;box&gt; y &lt;word&gt;. Las etiquetas <i>box</i> representan a los grupos, que contienen más grupos y palabras. Los elementos <i>word</i> representan a las palabras de la oración.<br/><br/>
+	Todos los elementos de este archivo tienen varios <i>atributos</i>, como <b>p</b> y <b>taf</b>. El atributo <b>p</b> no interviene en la representación gráfica de la oración, pero es indispensable para que Lemon Ink permita editar la oración. En cambio <b>TAF</b> (tipo y función), es el valor que tendrá el elemento en la oración.<br/><br/>
+	En ocasiones se presenta el atributo <b>xmlns</b> este atributo es completamente contigente y podemos prescindir de él. Vamos a eliminar <b>xmlns</b> y <b>p</b> para entender mejor la oración:<br/>
+	<img src="res/code2.PNG"></img><br/>
+	Una manera de entender esto de otra manera sería:<br/>
+	<img src="res/code3.PNG"></img><br/>
+<br/>
+</body>
+</html>
