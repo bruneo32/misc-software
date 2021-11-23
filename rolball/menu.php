@@ -144,7 +144,7 @@
         <div id="_p_creds" class="lpanel">
           <h1>Credits:</h1><br/>
           <p>
-            Bruno Castro [<a href="mailto:bruno@retronomicon.com" target="_blank">bruno@retronomicon.com</a>]
+            Bruno Castro [<a href="mailto:bruneo32b@gmail.com" target="_blank">bruneo32b@gmail.com</a>]
           </p><br/>
           <br/>
           <h1>Licenses:</h1><br/>
