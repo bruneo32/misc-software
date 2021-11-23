@@ -7,3 +7,5 @@ Old discontinuated and rescued projects
 
 The software here are old videogames made with GameMaker 8.0
 and webpages of crazy things.
+
+### Any different email to [bruneo32b@gmail.com](mailto:bruneo32b@gmail.com) is unsupported
