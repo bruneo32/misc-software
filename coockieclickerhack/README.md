@@ -10,4 +10,7 @@ This is required the first time
 # Run
 Every time you want to init the hack.
 1. Open JSConsole of your browser *(usually `ctrl+shift+J`)*.
-2. Run `eval(Game.localStorageGet("cookiehack"));`
+2. Run
+```js
+eval(Game.localStorageGet("cookiehack"));
+```
