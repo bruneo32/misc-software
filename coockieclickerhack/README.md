@@ -1,6 +1,6 @@
 # Registering *(once)*
 This is required the first time
-1. Copy the content of [cookieclickerhack.min.js](raw/cookieclicker.min.js).
+1. Copy the content of [cookieclickerhack.min.js](https://raw.githubusercontent.com/bruneo32/misc-software/main/coockieclickerhack/cookieclickerhack.min.js).
 2. Open [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/) game.
 3. Open JSConsole of your browser *(usually `ctrl+shift+J`)*.
 4. Paste and hit ENTER
